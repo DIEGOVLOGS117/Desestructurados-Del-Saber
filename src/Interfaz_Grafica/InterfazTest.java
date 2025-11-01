@@ -11,7 +11,7 @@ public class InterfazTest extends JFrame{
     private JPasswordField contrasenha;
 
     public InterfazTest() {
-    setTitle("PreIntellectus Education - Plataforma Educativa Offline");
+    setTitle("PreIntellectus Education - Plataforma Educativa Offline ");
     setExtendedState(JFrame.MAXIMIZED_BOTH); // Ocupa toda la pantalla
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setVisible(true);
