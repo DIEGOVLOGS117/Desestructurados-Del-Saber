@@ -1,4 +1,4 @@
-package MAIN;
+package Main_Proyecto;
 
 public class Main_PlataformaEdu {
     
