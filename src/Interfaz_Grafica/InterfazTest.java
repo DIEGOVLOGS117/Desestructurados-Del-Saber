@@ -12,7 +12,7 @@ public class InterfazTest extends JFrame{
 
     public InterfazTest() {
     setTitle("PreIntellectus Education - Plataforma Educativa Offline");
-    setExtendedState(JFrame.MAXIMIZED_BOTH); // Ocupa toda la pantalla
+    setExtendedState(JFrame.MAXIMIZED_BOTH); 
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setVisible(true);
 }
