@@ -1,13 +1,14 @@
 
 package Estructuras_De_Datos.ListaSimple;
 
+import Estructuras_De_Datos.Grafos; //solo importo la clase 
 
 public class Nodo {
-     public int dato;
+    public Grafos dato;
     public Nodo siguiente = null;
     
     
-    public Nodo(int dato){
+    public Nodo(Grafos dato){
         this.dato = dato; 
     }
 }

@@ -1,6 +1,7 @@
 
 package Estructuras_De_Datos.ListaSimple;
 
+import Estructuras_De_Datos.Grafos;
 
 public class Lista {
     private Nodo cabeza; 
@@ -12,14 +13,14 @@ public class Lista {
          
     }
     
-     public void insertarNodoInicio(int dato){
+     public void insertarNodoInicio(Grafos dato){
         Nodo nodoIni = new Nodo(dato);
         nodoIni.siguiente = cabeza; 
         cabeza = nodoIni; 
         tamano++;
     }
      
-     public void insertarNodoFinal(int dato){
+     public void insertarNodoFinal(Grafos dato){
          Nodo nodoFin = new Nodo(dato);
          Nodo nodoRecorre = cabeza; // hise una copia 
          
@@ -31,7 +32,7 @@ public class Lista {
          tamano++;
      }
      
-     public void insertarNodoIndice(int dato,int posicion ){ // insear nodo en un indice 
+     public void insertarNodoIndice(Grafos dato,int posicion ){ // insear nodo en un indice 
         
          Nodo nodoIndice = new Nodo(dato);
          Nodo nodoRecorre = cabeza;
@@ -125,7 +126,7 @@ public class Lista {
          }
      }
          
-     public void buscadorDeValore(int valor){
+     public void buscadorDeGrafos(Grafos valor){
          // implementar en que posicion se encuentra ese valor terminar para la casa 
 //        boolean vrificador = false;
          Nodo recorre = cabeza;
