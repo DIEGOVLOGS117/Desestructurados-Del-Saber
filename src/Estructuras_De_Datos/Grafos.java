@@ -8,6 +8,13 @@ public class Grafos {
     private String tipo; // si es estudiante o profesor 
     private String materia;
     
+    public Grafos(int id,String tipo, String materia){
+    
+        this.id= id;
+        this.materia = materia;
+        this.tipo = tipo;
+}
+    
     
     
     
