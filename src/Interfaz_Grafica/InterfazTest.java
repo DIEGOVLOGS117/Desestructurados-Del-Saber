@@ -23,13 +23,15 @@ public class InterfazTest extends JFrame{
     setExtendedState(JFrame.MAXIMIZED_BOTH); 
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setVisible(true); 
+    setLocationRelativeTo(null);
+    setResizable(true);
     
     JPanel root = new JPanel(new BorderLayout());
     root.setBorder(new EmptyBorder(16,24,16,24));
     setContentPane(root);  
-    
     JPanel norte = new JPanel(new BorderLayout());
     JLabel titulo = new JLabel("Iniciar Sesión", SwingConstants.CENTER);
+    titulo.setFont(new Font("Montserrat", Font.BOLD, 30));
     titulo.setFont(titulo.getFont().deriveFont(Font.BOLD, 25f));
     norte.add(titulo, BorderLayout.CENTER);
     norte.setBorder(new EmptyBorder(16, 0, 16, 0));
