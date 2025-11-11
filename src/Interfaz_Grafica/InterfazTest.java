@@ -19,6 +19,7 @@ public class InterfazTest extends JFrame{
     private JProgressBar barra;
     
     public InterfazTest() {
+        
     setTitle("Plataforma Educativa Oficial - Login");
     setExtendedState(JFrame.MAXIMIZED_BOTH); 
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,16 +36,31 @@ public class InterfazTest extends JFrame{
     titulo.setFont(titulo.getFont().deriveFont(Font.BOLD, 25f));
     norte.add(titulo, BorderLayout.CENTER);
     norte.setBorder(new EmptyBorder(16, 0, 16, 0));
+    
     root.add(norte, BorderLayout.NORTH);  
+    
+    //root.add(crearFormularioLogin(), BorderLayout.CENTER);
+    
+    
     
     establecerIconoSuperiorLogin();
 }
+    
+    private void crearFormularioLogin(){
+        JPanel panelcito = new JPanel();
+        
+    }
+    
+    
+    
+    
+    
     
     private void establecerIconoSuperiorLogin(){
         try{
             ImageIcon iconitoSuperior = new ImageIcon("RecursosPlataformaEducativa/APP_EDUCATIVA_ICO_SUPERIOR.png");           
             Image imagencita = iconitoSuperior.getImage();
-            Image imagenRedimensionada = imagencita.getScaledInstance(256, 256, Image.SCALE_SMOOTH);
+            Image imagenRedimensionada = imagencita.getScaledInstance(512, 512, Image.SCALE_SMOOTH);
         setIconImage(imagenRedimensionada);
         } catch(Exception e){
             System.out.println("Error Al Cargar Icono Superior De Login " + e.getMessage());  
