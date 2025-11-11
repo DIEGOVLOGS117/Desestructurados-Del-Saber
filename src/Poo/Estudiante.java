@@ -16,6 +16,7 @@ public class Estudiante extends Persona {
         super(nombre, apellido, usuario, password);
         this.puntajeExamen = -1; // -1 indica que aun no presenta examen
         this.clasificaciones = new HashMap<>(); 
+       
     }
 // falta meterle validacion al recivir los datos 
     public void registrarExamen(int puntaje) {

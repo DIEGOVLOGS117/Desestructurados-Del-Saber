@@ -21,6 +21,17 @@ public class Grafo_Estudiantes {
         
         
     }
+   
+   public void agregarProfesor(String materia,String nombreProfesor){
+       
+     
+       
+       
+       
+   }
+   
+   
+   
     
     
     
