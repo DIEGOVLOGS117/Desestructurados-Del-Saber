@@ -15,7 +15,7 @@ public class Asignacion {
     
     public void materiasPerdidas(Materias resultados){
         
-        if(resultados.)
+       
         
     }
     
@@ -36,6 +36,6 @@ public class Asignacion {
         
     }
     
-    
+    public void 
     
 }
