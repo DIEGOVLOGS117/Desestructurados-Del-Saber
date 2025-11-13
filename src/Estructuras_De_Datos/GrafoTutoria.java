@@ -18,7 +18,7 @@ public class GrafoTutoria {
     // Key: Falencia (Materia)
     // Value: Profesor asignado a esa materia
     
-    public void GrafoTutor(){
+    public GrafoTutoria(){
         this.asignacionProfesor= new HashMap<>();
         this.estudiantesPorFalencia = new HashMap <>();
         
@@ -38,15 +38,15 @@ public class GrafoTutoria {
     
     public void construirGrafo(List<Estudiante> estudiantes) {
         for (Estudiante e : estudiantes) {
-            String falencia = e.getFalenciaPrincipal();
+            String falencia = e.getMateriaBaja();
             
             // Si la falencia (nodo) no existe, se inicializa su lista
-            if (!grafoEstudiantesPorFalencia.containsKey(falencia)) {
-                grafoEstudiantesPorFalencia.put(falencia, new ArrayList<>());
+            if (!estudiantesPorFalencia.containsKey(falencia)) {
+                estudiantesPorFalencia.put(falencia, new ArrayList<>());
             }
             
             // Conecta el estudiante a la falencia (añadir a la lista)
-            grafoEstudiantesPorFalencia.get(falencia).add(e);
+            estudiantesPorFalencia.get(falencia).add(e);
         }
     }
 
@@ -59,9 +59,9 @@ public class GrafoTutoria {
         System.out.println("==================================================");
 
         // Iterar sobre las materias (los nodos centrales del grafo)
-        for (String falencia : grafoEstudiantesPorFalencia.keySet()) {
-            List<Estudiante> estudiantes = grafoEstudiantesPorFalencia.get(falencia);
-            Profesor profesorAsignado = asignacionProfesores.get(falencia);
+        for (String falencia : estudiantesPorFalencia.keySet()) {
+            List<Estudiante> estudiantes = estudiantesPorFalencia.get(falencia);
+            Profesor profesorAsignado = asignacionProfesor.get(falencia);
 
             // 1. Mostrar el nodo central (Falencia/Materia)
             System.out.println("\n▶ FALENCIA GRUPAL: " + falencia.toUpperCase());
@@ -84,5 +84,16 @@ public class GrafoTutoria {
             System.out.println(String.join(", ", nombres));
         }
     
+    
+}
+
+    public void configurarProfesores(List<Profesor> profesores) {
+        // Itera sobre la lista de profesores que le pasamos desde el main
+        for (Profesor p : profesores) {
+            // Usa la especialidad del profesor (ej. "Lenguaje") como clave
+            // y el objeto Profesor (ej. Profe. Laura) como valor.
+            asignacionProfesor.put(p.getEspecialidad(), p);
+        }
+    }
     
 }
