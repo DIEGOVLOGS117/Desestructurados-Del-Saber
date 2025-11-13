@@ -23,20 +23,21 @@ public class InterfazTest extends JFrame {
         setLocationRelativeTo(null);
         setResizable(true);
 
-        JPanel root = new JPanel(new BorderLayout());
-        root.setBorder(new EmptyBorder(16, 24, 16, 24));
-        setContentPane(root);
+        // Establecer el fondo ANTES de los otros componentes
+        establecerFondoLogin();
 
-        // Panel superior (título)
+        // Panel superior (título) - ahora transparente
         JPanel norte = new JPanel(new BorderLayout());
+        norte.setOpaque(false); // Hacer transparente
         JLabel titulo = new JLabel("Iniciar Sesión", SwingConstants.CENTER);
         titulo.setFont(new Font("Montserrat", Font.BOLD, 25));
+        titulo.setForeground(Color.WHITE); // Texto blanco para contrastar
         norte.add(titulo, BorderLayout.CENTER);
         norte.setBorder(new EmptyBorder(16, 0, 16, 0));
-        root.add(norte, BorderLayout.NORTH);
+        getContentPane().add(norte, BorderLayout.NORTH);
 
         // Agregar formulario de login
-        root.add(crearFormularioLogin(), BorderLayout.CENTER);
+        getContentPane().add(crearFormularioLogin(), BorderLayout.CENTER);
 
         establecerIconoSuperiorLogin();
 
@@ -48,6 +49,7 @@ public class InterfazTest extends JFrame {
         JPanel panelcito = new JPanel();
         panelcito.setLayout(new GridBagLayout());
         panelcito.setBorder(new EmptyBorder(20, 100, 20, 100));
+        panelcito.setOpaque(false); // IMPORTANTE: Hacer transparente
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(10, 10, 10, 10);
@@ -56,11 +58,56 @@ public class InterfazTest extends JFrame {
         gbc.gridy = 0;
 
         // Campo de usuario / correo electrónico
-        panelcito.add(new JLabel("Usuario o Correo Electrónico:"), gbc);
+        JLabel lblUsuario = new JLabel("Usuario o Correo Electrónico:");
+        lblUsuario.setForeground(Color.WHITE);
+        lblUsuario.setFont(new Font("Arial", Font.BOLD, 14));
+        panelcito.add(lblUsuario, gbc);
 
         gbc.gridy++;
         email = new JTextField(20);
+        email.setPreferredSize(new Dimension(250, 35));
         panelcito.add(email, gbc);
+
+        // Campo de contraseña
+        gbc.gridy++;
+        JLabel lblPassword = new JLabel("Contraseña:");
+        lblPassword.setForeground(Color.WHITE);
+        lblPassword.setFont(new Font("Arial", Font.BOLD, 14));
+        panelcito.add(lblPassword, gbc);
+
+        gbc.gridy++;
+        contrasenha = new JPasswordField(20);
+        contrasenha.setPreferredSize(new Dimension(250, 35));
+        panelcito.add(contrasenha, gbc);
+
+        // Checkbox mostrar contraseña
+        gbc.gridy++;
+        mostrarPass = new JCheckBox("Mostrar contraseña");
+        mostrarPass.setForeground(Color.WHITE);
+        mostrarPass.setOpaque(false);
+        panelcito.add(mostrarPass, gbc);
+
+        // Checkbox recordar usuario
+        gbc.gridy++;
+        recordar = new JCheckBox("Recordar usuario");
+        recordar.setForeground(Color.WHITE);
+        recordar.setOpaque(false);
+        panelcito.add(recordar, gbc);
+
+        // Botones
+        gbc.gridy++;
+        JPanel panelBotones = new JPanel(new FlowLayout());
+        panelBotones.setOpaque(false);
+        
+        btnIniciar = new JButton("Iniciar Sesión");
+        btnIniciar.setPreferredSize(new Dimension(120, 35));
+        
+        btnCancelar = new JButton("Cancelar");
+        btnCancelar.setPreferredSize(new Dimension(120, 35));
+        
+        panelBotones.add(btnIniciar);
+        panelBotones.add(btnCancelar);
+        panelcito.add(panelBotones, gbc);
 
         return panelcito;
     }
@@ -73,6 +120,31 @@ public class InterfazTest extends JFrame {
             setIconImage(imagenRedimensionada);
         } catch (Exception e) {
             System.out.println("Error al cargar icono superior de login: " + e.getMessage());
+        }
+    }
+    
+    public void establecerFondoLogin(){
+        try{
+            ImageIcon fondo_Imagen = new ImageIcon("RecursosPlataformaEducativa/FondoLogin.png");
+            Image imagenFondo = fondo_Imagen.getImage();
+            
+            // Crear panel personalizado con fondo
+            JPanel panelConFondo = new JPanel(new BorderLayout()) {
+                @Override
+                protected void paintComponent(Graphics g) {
+                    super.paintComponent(g);
+                    // Dibujar la imagen escalada para que cubra todo el panel
+                    g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
+                }
+            };
+            
+            panelConFondo.setBorder(new EmptyBorder(16, 24, 16, 24));
+            setContentPane(panelConFondo);
+            
+        } catch(Exception e){
+            System.out.println("Error al cargar fondo de login: " + e.getMessage());
+            // Fondo por defecto en caso de error
+            getContentPane().setBackground(new Color(52, 152, 219));
         }
     }
 
