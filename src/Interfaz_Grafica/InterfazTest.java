@@ -60,7 +60,7 @@ public class InterfazTest extends JFrame {
         // Campo de usuario / correo electrónico
         JLabel lblUsuario = new JLabel("Usuario o Correo Electrónico:");
         lblUsuario.setForeground(Color.WHITE);
-        lblUsuario.setFont(new Font("Arial", Font.BOLD, 14));
+        lblUsuario.setFont(new Font("Montserrat", Font.BOLD, 16));
         panelcito.add(lblUsuario, gbc);
 
         gbc.gridy++;
@@ -72,7 +72,7 @@ public class InterfazTest extends JFrame {
         gbc.gridy++;
         JLabel lblPassword = new JLabel("Contraseña:");
         lblPassword.setForeground(Color.WHITE);
-        lblPassword.setFont(new Font("Arial", Font.BOLD, 14));
+        lblPassword.setFont(new Font("Montserrat", Font.BOLD, 16));
         panelcito.add(lblPassword, gbc);
 
         gbc.gridy++;
@@ -89,7 +89,7 @@ public class InterfazTest extends JFrame {
 
         // Checkbox recordar usuario
         gbc.gridy++;
-        recordar = new JCheckBox("Recordar usuario");
+        recordar = new JCheckBox("Recordar Usuario");
         recordar.setForeground(Color.WHITE);
         recordar.setOpaque(false);
         panelcito.add(recordar, gbc);
@@ -99,11 +99,30 @@ public class InterfazTest extends JFrame {
         JPanel panelBotones = new JPanel(new FlowLayout());
         panelBotones.setOpaque(false);
         
-        btnIniciar = new JButton("Iniciar Sesión");
+        btnIniciar = new JButton("Iniciar App");
         btnIniciar.setPreferredSize(new Dimension(120, 35));
         
-        btnCancelar = new JButton("Cancelar");
+//        btnIniciar.setOpaque(false);
+//        btnIniciar.setContentAreaFilled(false);
+//        btnIniciar.setBorderPainted(false);
+//        btnIniciar.setForeground(Color.WHITE);
+//        btnIniciar.setFocusPainted(false); 
+        
+        btnCancelar = new JButton("Salir App");
         btnCancelar.setPreferredSize(new Dimension(120, 35));
+        
+//        btnCancelar.setOpaque(false);
+//        btnCancelar.setContentAreaFilled(false);
+//        btnCancelar.setBorderPainted(false);
+//        btnCancelar.setForeground(Color.WHITE);
+//        btnCancelar.setFocusPainted(false); 
+        
+        
+        
+        
+        
+        
+        
         
         panelBotones.add(btnIniciar);
         panelBotones.add(btnCancelar);
