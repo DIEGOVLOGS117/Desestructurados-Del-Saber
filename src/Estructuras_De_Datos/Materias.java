@@ -35,9 +35,6 @@ public class Materias {
          
      }
          
-     
-     
-     
      public void materiasPerdidas(){
          
          for(int i =0; i < notas.size(); i++){
