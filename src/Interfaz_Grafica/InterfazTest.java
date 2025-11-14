@@ -153,7 +153,7 @@ public class InterfazTest extends JFrame {
                 protected void paintComponent(Graphics g) {
                     super.paintComponent(g);
                     // Dibujar la imagen escalada para que cubra todo el panel
-                    g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this);
+                    g.drawImage(imagenFondo, 0, 0, getWidth(), getHeight(), this); // para que la imagen quede melo
                 }
             };
             
