@@ -1,20 +1,75 @@
-
 package Poo;
 
+import Poo.Estudiante;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class TestRegistro {
 
-    // Metodo auxiliar para pedir un dato con validacion y hasta 3 intentos
-    private static String pedirDato(Scanner sc, String mensaje, Pattern patron, String errorMsg) {
+
+     // Detecta si el texto contiene números o símbolos
+    private static boolean contieneCaracteresInvalidos(String texto) {
+        return !texto.matches("^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+$");
+    }
+
+    // No permitir más de 2 letras iguales consecutivas
+    private static boolean tieneRepeticionesExcesivas(String texto) {
+        String t = texto.toLowerCase();
+        for (int i = 0; i < t.length() - 2; i++) {
+            if (t.charAt(i) == t.charAt(i + 1) && t.charAt(i + 1) == t.charAt(i + 2)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Detecta patrones repetidos como "anaana" o "ioioio"
+    private static boolean tienePatronRepetido(String texto) {
+        String t = texto.toLowerCase();
+        int len = t.length();
+
+        for (int size = 1; size <= len / 2; size++) {
+            String patron = t.substring(0, size);
+
+            StringBuilder sb = new StringBuilder();
+            while (sb.length() < len) {
+                sb.append(patron);
+            }
+
+            String generado = sb.toString().substring(0, len);
+            if (generado.equals(t)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Valida nombres y apellidos con todas las reglas
+    private static boolean nombreInvalido(String texto) {
+        if (texto.isEmpty()) return true;
+        if (contieneCaracteresInvalidos(texto)) return true;
+        if (tieneRepeticionesExcesivas(texto)) return true;
+        if (tienePatronRepetido(texto)) return true;
+        return false;
+    }
+    private static String pedirDato(Scanner sc, String mensaje, boolean validarNombreComplejo, Pattern patronSimple, String errorMsg) {
         int intentos = 0;
+
         while (intentos < 3) {
             System.out.print(mensaje);
             String entrada = sc.nextLine().trim();
 
-            if (!entrada.isEmpty() && patron.matcher(entrada).matches()) {
-                return entrada; // valido → lo devuelve
+            // Validación básica si es usuario/contraseña
+            if (!validarNombreComplejo) {
+                if (!entrada.isEmpty() && patronSimple.matcher(entrada).matches()) {
+                    return entrada;
+                }
+            }
+            // Validación compleja para nombre/apellido
+            else {
+                if (!nombreInvalido(entrada)) {
+                    return entrada;
+                }
             }
 
             intentos++;
@@ -23,7 +78,7 @@ public class TestRegistro {
 
         System.out.println("\n Demasiados intentos fallidos. El registro se cancelo.");
         System.exit(0);
-        return null; // nunca llega aquí, pero el compilador lo exige
+        return null;
     }
 
     public static void main(String[] args) {
@@ -32,53 +87,75 @@ public class TestRegistro {
 
         System.out.println("=== Registro de estudiante ===");
 
-        // Expresiones regulares
-        Pattern soloLetras = Pattern.compile("^[a-zA-ZáéíóúÁÉÍÓÚñÑ]+$");
         Pattern usuarioValido = Pattern.compile("^[a-zA-Z0-9]+$");
         Pattern contrasenaValida = Pattern.compile("^[a-zA-Z0-9]+$");
 
-        // Solicitar datos con validación
-        String nombre = pedirDato(sc, "Ingrese nombre: ", soloLetras,
-                "El nombre debe contener solo letras y no puede estar vacio.");
-        String apellido = pedirDato(sc, "Ingrese apellido: ", soloLetras,
-                "El apellido debe contener solo letras y no puede estar vacio.");
-        String usuario = pedirDato(sc, "Ingrese nombre de usuario: ", usuarioValido,
-                "El usuario solo puede contener letras y numeros (sin espacios ni simbolos).");
-        String password = pedirDato(sc, "Ingrese contrasena: ", contrasenaValida,
-                "La contrasena solo puede contener letras y numeros (sin simbolos).");
+        // NOMBRE Y APELLIDO (validación avanzada)
+        String nombre = pedirDato(sc,
+                "Ingrese nombre: ",
+                true, null,
+                "El nombre no es valido (solo letras, sin simbolos, sin repeticiones exageradas).");
 
-        // Crear estudiante
+        String apellido = pedirDato(sc,
+                "Ingrese apellido: ",
+                true, null,
+                "El apellido no es valido (solo letras, sin simbolos, sin repeticiones exageradas).");
+
+        // USUARIO Y CONTRASEÑA 
+        String usuario = pedirDato(sc,
+                "Ingrese nombre de usuario: ",
+                false, usuarioValido,
+                "El usuario solo puede contener letras y numeros.");
+
+        String password = pedirDato(sc,
+                "Ingrese contrasena: ",
+                false, contrasenaValida,
+                "La contraseña solo puede contener letras y numeros.");
+
+        // CREAR ESTUDIANTE
         Estudiante estudiante = new Estudiante(nombre, apellido, usuario, password);
 
-        // PUNTAJE DEL EXAMEN (máximo 3 intentos)
+
+        // PUNTAJE DEL EXAMEN (con 3 intentos)
         int intentos = 0;
         int puntaje = -1;
+
         while (intentos < 3) {
-            System.out.print("\nIngrese el puntaje del examen (0-100): ");
+    System.out.print("\nIngrese el puntaje del examen (0-100): ");
+    String entrada = sc.nextLine().trim();
 
-            if (sc.hasNextInt()) {
-                puntaje = sc.nextInt();
-                sc.nextLine(); // limpiar buffer
+    // Verifica si está vacío
+    if (entrada.isEmpty()) {
+        intentos++;
+        System.out.println("ERROR El puntaje no puede estar vacio. (Intento " + intentos + " de 3)");
+        continue;
+    }
 
-                if (puntaje >= 0 && puntaje <= 100) {
-                    break; // válido
-                }
-            } else {
-                sc.nextLine(); // limpiar entrada no numérica
-            }
+    // Verifica si es número válido
+    try {
+        puntaje = Integer.parseInt(entrada);
 
+        if (puntaje >= 0 && puntaje <= 100) {
+            break; // válido
+        } else {
             intentos++;
-            System.out.println("ERROR Puntaje invalido. Debe ser un numero entre 0 y 100. (Intento " + intentos + " de 3)");
+            System.out.println("ERROR Puntaje invalido. Debe estar entre 0 y 100. (Intento " + intentos + " de 3)");
         }
 
-        if (intentos == 3) {
-            System.out.println("\nDemasiados intentos fallidos. El registro se cancelo.");
-            System.exit(0);
-        }
+    } catch (NumberFormatException e) {
+        intentos++;
+        System.out.println("ERROR Debe ingresar un número entero. (Intento " + intentos + " de 3)");
+    }
+    }
+
+    if (intentos == 3) {
+        System.out.println("\nDemasiados intentos fallidos. El registro se cancelo.");
+        System.exit(0);
+    }
 
         estudiante.registrarExamen(puntaje);
 
-        // Registro exitoso
+        
         System.out.println("\n Registro exitoso");
         System.out.println("Estudiante registrado:");
         System.out.println("Nombre: " + estudiante.getNombre() + " " + estudiante.getApellido());
