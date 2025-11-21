@@ -26,15 +26,7 @@ public class GrafoTutoria {
         
     }
     
-    
-    public void configurarprofesor(List<Profesor> profesores ){
-        for(Profesor p: profesores){
-            asignacionProfesor.put(p.getEspecialidad(),p);
-            //.put(clave, valor);
-        }
-    }
-    
-    // terminar de codifiar esta fucnion
+
     
     public void construirGrafo(List<Estudiante> estudiantes) {
         for (Estudiante e : estudiantes) {
@@ -55,7 +47,7 @@ public class GrafoTutoria {
      */
     public void mostrarAsignaciones() {
         System.out.println("==================================================");
-        System.out.println("       ESTRUCTURA DEL GRAFO DE TUTORÍA");
+        System.out.println("       ESTRUCTURA DEL GRAFO DE TUTORIA");
         System.out.println("==================================================");
 
         // Iterar sobre las materias (los nodos centrales del grafo)
@@ -64,14 +56,14 @@ public class GrafoTutoria {
             Profesor profesorAsignado = asignacionProfesor.get(falencia);
 
             // 1. Mostrar el nodo central (Falencia/Materia)
-            System.out.println("\n▶ FALENCIA GRUPAL: " + falencia.toUpperCase());
+            System.out.println("\n FALENCIA GRUPAL: " + falencia.toUpperCase());
             System.out.println("--------------------------------------------------");
 
             // 2. Mostrar la conexión Materia -> Profesor
             if (profesorAsignado != null) {
                 System.out.println("  ASIGNADO A PROFESOR: " + profesorAsignado.getNombre());
             } else {
-                System.out.println("  ⚠️ ERROR: No hay profesor asignado para " + falencia);
+                System.out.println("  ️ ERROR: No hay profesor asignado para " + falencia);
             }
 
             // 3. Mostrar las conexiones Estudiante -> Materia (el grupo)

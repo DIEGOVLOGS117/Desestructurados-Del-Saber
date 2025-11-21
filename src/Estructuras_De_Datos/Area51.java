@@ -21,6 +21,7 @@ public class Area51 {
         
         for(Estudiante e : estudiantes){
             e.notaMaterias(20, 30, 40, 60, 100);
+            
         }
 
         // 2. DATOS DE PROFESORES
