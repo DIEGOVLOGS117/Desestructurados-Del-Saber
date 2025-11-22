@@ -26,28 +26,31 @@ public class Estudiante extends Persona {
        
     }
     
-    public void notaMaterias(int mat,int soc,int ing,int bio,int leng){
+    public void notaMaterias(int matematicas,int sociales,int ingles,int biologia,int lenguaje){
         
-        this.matematicas = mat;
-        this.sociales = soc;
-        this.ingles = ing;
-        this.biologia = bio;
-        this.lenguaje = leng;
+        this.matematicas = matematicas;
+        this.sociales = sociales;
+        this.ingles = ingles;
+        this.biologia = biologia;
+        this.lenguaje = lenguaje;
         
     }
     
     public int getNota(String materia){ 
-        switch(materia.toLowerCase()){// pasa las letras mayusculas a minusculas
-            case "Matematicas" : return  matematicas;
-            case "Lenguaje" : return   lenguaje;
-            case "Biologia" : return biologia;
-            case "Ingles" :return ingles;
-            default: return -1;
-        } 
-    }
+    // Corregido: Los casos del switch deben estar en minúsculas
+    // porque la variable 'materia' se convierte a minúsculas (.toLowerCase())
+    switch(materia.toLowerCase()){
+        case "matematicas" : return  matematicas;
+        case "lenguaje" : return   lenguaje;
+        case "biologia" : return biologia;
+        case "ingles" :return ingles;
+        case "sociales" : return sociales; // Añadido para completar el set
+        default: return -1;
+    } 
+}
     
     public String getMateriaBaja(){ // analisa todas las notas de las aterias y devuelve la materia en la que peor le fue 
-        String [] materias = {"Matematias","Lenguaje","Biologia","Ingles"};
+        String [] materias = {"Matematicas","Lenguaje","Biologia","Ingles"};
         String materiaBaja = "" ;
         int notaMinima = 101; // recorremos hacia atras los puntajes 
         
