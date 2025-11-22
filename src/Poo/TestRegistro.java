@@ -76,7 +76,7 @@ public class TestRegistro {
             System.exit(0);
         }
 
-        //estudiante.registrarExamen(puntaje);
+//        estudiante.registrarExamen(puntaje);
 
         // Registro exitoso
         System.out.println("\n Registro exitoso");

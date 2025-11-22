@@ -8,6 +8,8 @@ public class Materias {
     ArrayList<Integer> notas = new ArrayList<>();
     ArrayList<String> nombreMateria = new ArrayList<>();
     
+    private String materiaMasBaja; 
+    
     private int mates;
     private int ingles;
     private int biologia;
@@ -31,24 +33,36 @@ public class Materias {
          notas.add(sociales);
          notas.add(lectura);
          
-         
+         this.materiaMasBaja = "Ninguna"; // por si hay un estudiante que haya pasado todo 
          
      }
          
      public void materiasPerdidas(){
          
+         int notaMasBaja = 101; 
+         String materiaMasBajaTemp = null;
+         
          for(int i =0; i < notas.size(); i++){
-             if(notas.get(i)>70){
+             int notaActual = notas.get(i);
              
-         }else{
+             if(notaActual < 70){ // codicion para que reprueben 
                  
-                 nombreMateria.add(materias[i]);
-                 
+                 nombreMateria.add(materias[i]); // lista de todas las materias reprobadas 
+                 if(notaActual < notaMasBaja){
+                     notaMasBaja = notaActual;
+                     materiaMasBajaTemp = materias[i];
                  }
+             
+
+        
+     
+             }
          }
-         
-         
      }
-            
-    
+     
+     
+     
+     public String getMateriaMasBaja(){
+                return this.materiaMasBaja;
+            }
 }
