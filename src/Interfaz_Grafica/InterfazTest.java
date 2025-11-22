@@ -167,6 +167,16 @@ public class InterfazTest extends JFrame {
         }
     }
 
+    public void registroUsuarioNuevo(){
+        
+    }
+    
+    
+    
+    
+    
+    
+    
     public static void main(String[] args) {
         SwingUtilities.invokeLater(InterfazTest::new);
     }
