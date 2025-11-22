@@ -10,7 +10,8 @@ public class Profesor extends Persona {
         this.especialidad = especialidad;
     }
 
-    public String getEspecialidad() {
+    public String getEspecialidad() { // garantiza que el hasmap dectete que 
+        // la clave de tipo String sea la relacionada a la matria 
         return especialidad;
     }
 }

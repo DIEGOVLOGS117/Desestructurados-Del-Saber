@@ -46,7 +46,7 @@ public class Estudiante extends Persona {
         } 
     }
     
-    public String getMateriaBaja(){
+    public String getMateriaBaja(){ // analisa todas las notas de las aterias y devuelve la materia en la que peor le fue 
         String [] materias = {"Matematias","Lenguaje","Biologia","Ingles"};
         String materiaBaja = "" ;
         int notaMinima = 101; // recorremos hacia atras los puntajes 

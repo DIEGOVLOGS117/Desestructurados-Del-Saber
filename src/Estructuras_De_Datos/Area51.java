@@ -11,7 +11,7 @@ public class Area51 {
     
     public static void main(String[] args) {
         
-        List<Estudiante> estudiantes = Arrays.asList(
+        List<Estudiante> estudiantes = Arrays.asList( // creo una lista de estudiantes 
             new Estudiante("Ana","a","a","a"),   // Falencia: Lenguaje (55)
             new Estudiante("Beto", "b","b","b"),  // Falencia: Ciencias (45)
             new Estudiante("Carla", "c","c","c"), // Falencia: Lenguaje (50)
@@ -24,7 +24,7 @@ public class Area51 {
             
         }
 
-        // 2. DATOS DE PROFESORES
+        // 2. Creo la lista de profesores 
         List<Profesor> profesores = Arrays.asList(
             new Profesor("Profe. Laura","","","", "Lenguaje"),
             new Profesor("Profe. Miguel","","","", "Ciencias"),
