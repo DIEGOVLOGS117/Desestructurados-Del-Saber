@@ -75,7 +75,11 @@ public class Estudiante extends Persona {
     public void agregarCalificacion(String materia,int clasificacion){
         clasificaciones.put(materia,clasificacion);
     }
-    
+
+    public void registrarExamen(int puntaje) {
+    this.puntajeExamen = puntaje;
+}
+
     
   
     

@@ -10,7 +10,7 @@ import Poo.Profesor;
 public class Area51 {
     
     public static void main(String[] args) {
-        
+        //Implementar el scanner para que el usuario digite sus propios datos, esto incluye el puntaje en cada materia del exámen
         List<Estudiante> estudiantes = Arrays.asList(
             new Estudiante("Ana","a","a","a"),   // Falencia: Lenguaje (55)
             new Estudiante("Beto", "b","b","b"),  // Falencia: Ciencias (45)

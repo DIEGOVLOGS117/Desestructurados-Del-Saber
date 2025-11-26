@@ -9,6 +9,7 @@ public class GrafoTutoria {
     
     private Map<String,List<Estudiante>> estudiantesPorFalencia;
     
+    //Tener en cuenta la actualización en dado caso de que una persona tenga el mismo puntaje en unas materias
     //String recibe el nombre de la materia 
     //retorna lo que esta almacenado en al lista con ese nombre
     //es decir si el string fuera matematicas reotrnaria todos los estudiantes con falencias en matematicas

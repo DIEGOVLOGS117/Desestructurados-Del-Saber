@@ -110,7 +110,7 @@ public class TestRegistro {
         String password = pedirDato(sc,
                 "Ingrese contrasena: ",
                 false, contrasenaValida,
-                "La contraseña solo puede contener letras y numeros.");
+                "La contrasena solo puede contener letras y numeros.");
 
         // CREAR ESTUDIANTE
         Estudiante estudiante = new Estudiante(nombre, apellido, usuario, password);
