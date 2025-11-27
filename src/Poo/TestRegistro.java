@@ -48,7 +48,7 @@ public class TestRegistro {
                 "La contrasena solo puede contener letras y numeros (sin simbolos).");
 
         // Crear estudiante
-        Estudiante estudiante = new Estudiante(nombre, apellido, usuario, password);
+//        Estudiante estudiante = new Estudiante(nombre, apellido, usuario, password);
 
         // PUNTAJE DEL EXAMEN (máximo 3 intentos)
         int intentos = 0;
@@ -79,12 +79,12 @@ public class TestRegistro {
 //        estudiante.registrarExamen(puntaje);
 
         // Registro exitoso
-        System.out.println("\n Registro exitoso");
-        System.out.println("Estudiante registrado:");
-        System.out.println("Nombre: " + estudiante.getNombre() + " " + estudiante.getApellido());
-        System.out.println("Usuario: " + estudiante.getUsuario());
-        System.out.println("Puntaje examen: " + estudiante.getPuntajeExamen());
-
-        sc.close();
+//        System.out.println("\n Registro exitoso");
+//        System.out.println("Estudiante registrado:");
+//        System.out.println("Nombre: " + estudiante.getNombre() + " " + estudiante.getApellido());
+////        System.out.println("Usuario: " + estudiante.getUsuario());
+//        System.out.println("Puntaje examen: " + estudiante.getPuntajeExamen());
+//
+//        sc.close();
     }
 }

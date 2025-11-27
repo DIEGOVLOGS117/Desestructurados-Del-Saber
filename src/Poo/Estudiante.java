@@ -16,11 +16,8 @@ public class Estudiante extends Persona {
     private Map<String,Integer> clasificaciones; // estrutura de dato clave valos 
     //materia -> nota
     
-    
-    
-
-    public Estudiante(String nombre, String apellido, String usuario, String password) {
-        super(nombre, apellido, usuario, password);
+    public Estudiante(String nombre) {
+        super(nombre);
         this.puntajeExamen = -1; // -1 indica que aun no presenta examen
         this.clasificaciones = new HashMap<>(); 
        

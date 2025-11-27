@@ -17,10 +17,10 @@ public class Area51 {
         // NOTA: La firma es: (mat, soc, ing, bio, leng)
         List<Estudiante> estudiantes = Arrays.asList( 
             // Falencia es la nota más baja de {mat, leng, bio, ing}
-            new Estudiante("Ana","Perez","ana01","pass"),     
-            new Estudiante("Beto", "Gomez","beto02","pass"),    
-            new Estudiante("Carla", "Diaz","carla03","pass"),  
-            new Estudiante("David", "Rios","david04","pass") 
+            new Estudiante("Ana"),     
+            new Estudiante("Beto"),    
+            new Estudiante("Carla"),  
+            new Estudiante("David") 
         );
         
         // Se asignan notas diferentes para generar falencias distintas:
@@ -32,33 +32,33 @@ public class Area51 {
 
         // 2. DATOS DE PROFESORES
         List<Profesor> profesores = Arrays.asList(
-            new Profesor("Profe. Laura","","","", "Lenguaje"),
-            new Profesor("Profe. Miguel","","","", "Ciencias"),
-            new Profesor("Profe. Sofía","","","", "Historia"),
-            new Profesor("Profe. Gómez","","","", "Matematicas"),
-            new Profesor("Profe. María","","","", "Ingles") // Profesor adicional para Ingles
+        new Profesor("Profe. Laura", "Lenguaje"),
+        new Profesor("Profe. Miguel", "Ciencias"),
+        new Profesor("Profe. Sofía", "Historia"),
+        new Profesor("Profe. Gómez", "Matematicas"),
+        new Profesor("Profe. María", "Ingles")
         );
 
-        // 3. CONSTRUCCIÓN DEL GRAFO
-        GrafoTutoria proyecto = new GrafoTutoria();
-        proyecto.configurarProfesores(profesores); // Conecta Materia -> Profesor (1:1)
-        proyecto.construirGrafo(estudiantes);      // Conecta Estudiante -> Materia (N:1)
-        
-        
-        // --- 4. PRUEBAS DE FUNCIONAMIENTO ---
-        System.out.println("\n--- 4. PRUEBAS DEL MÉTODO mostrarGrafoPorMateria ---");
-        
-        // PRUEBA 1: Materia con más de un estudiante (Ana y Carla)
-        System.out.println("\n*** PRUEBA 1: Buscando el Grafo 'Lenguaje' ***");
-        proyecto.mostrarGrafoPorMateria("Lenguaje");
-        
-        // PRUEBA 2: Materia con un único estudiante (Beto)
-        System.out.println("\n*** PRUEBA 2: Buscando el Grafo 'Matematicas' ***");
-        proyecto.mostrarGrafoPorMateria("Matematicas");
-        
-        // PRUEBA 3: Materia que no es falencia para nadie (Debe mostrar error)
-        System.out.println("\n*** PRUEBA 3: Buscando el Grafo 'Biologia' ***");
-        proyecto.mostrarGrafoPorMateria("Biologia");
+//        // 3. CONSTRUCCIÓN DEL GRAFO
+//        GrafoTutoria proyecto = new GrafoTutoria();
+//        proyecto.configurarProfesores(profesores); // Conecta Materia -> Profesor (1:1)
+//        proyecto.construirGrafo(estudiantes);      // Conecta Estudiante -> Materia (N:1)
+//        
+//        
+//        // --- 4. PRUEBAS DE FUNCIONAMIENTO ---
+//        System.out.println("\n--- 4. PRUEBAS DEL MÉTODO mostrarGrafoPorMateria ---");
+//        
+//        // PRUEBA 1: Materia con más de un estudiante (Ana y Carla)
+//        System.out.println("\n*** PRUEBA 1: Buscando el Grafo 'Lenguaje' ***");
+//        proyecto.mostrarGrafoPorMateria("Lenguaje");
+//        
+//        // PRUEBA 2: Materia con un único estudiante (Beto)
+//        System.out.println("\n*** PRUEBA 2: Buscando el Grafo 'Matematicas' ***");
+//        proyecto.mostrarGrafoPorMateria("Matematicas");
+//        
+//        // PRUEBA 3: Materia que no es falencia para nadie (Debe mostrar error)
+//        System.out.println("\n*** PRUEBA 3: Buscando el Grafo 'Biologia' ***");
+//        proyecto.mostrarGrafoPorMateria("Biologia");
     }        
     }
             
