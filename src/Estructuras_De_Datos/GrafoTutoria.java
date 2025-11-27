@@ -6,12 +6,8 @@ import Poo.Profesor;
 
 public class GrafoTutoria {
     
-    // Key: nombre de la materia con falencia
-    // Value: lista de estudiantes que tienen esa falencia
     private Map<String, List<Estudiante>> estudiantesPorFalencia;
 
-    // Key: materia
-    // Value: profesor asignado a esa materia
     private Map<String, Profesor> asignacionProfesor;
     
     public GrafoTutoria() {
@@ -54,7 +50,7 @@ public class GrafoTutoria {
             return sb.toString();
         }
 
-        // 2. Obtener los Nodos y Aristas del Grafo
+        // Obtener los Nodos y Aristas del Grafo
         List<Estudiante> grupoEstudiantes = estudiantesPorFalencia.get(materiaBuscada);
         Profesor profesorAsignado = asignacionProfesor.get(materiaBuscada);
 

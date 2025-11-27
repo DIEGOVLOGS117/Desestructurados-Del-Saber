@@ -972,25 +972,19 @@ public class InterfazTest extends JFrame {
                     "Resultados del cuestionario",
                     JOptionPane.INFORMATION_MESSAGE
             );
-            int resp = JOptionPane.showConfirmDialog(
+            String nuevoNombre = JOptionPane.showInputDialog(
                     this,
-                    "¿Quieres volver a intentar el cuestionario?",
-                    "Reintentar",
-                    JOptionPane.YES_NO_OPTION
+                    "¿Quién es el próximo estudiante?\n\nIngrese el nombre completo:",
+                    "Nuevo estudiante",
+                    JOptionPane.QUESTION_MESSAGE
             );
 
-            if (resp == JOptionPane.YES_OPTION) {
-                mostrarCuestionario(nombreEstudiante);
-            } else {
-                mostrarBienvenidaCuestionario(nombreEstudiante);
+            if (nuevoNombre == null || nuevoNombre.trim().isEmpty()) {
+                nuevoNombre = "null";
             }
 
-
-            if (resp == JOptionPane.YES_OPTION) {
-                mostrarCuestionario(nombreEstudiante);
-            } else {
-                mostrarBienvenidaCuestionario(nombreEstudiante);
-            }
+            // Volver a la pantalla de bienvenida para el nuevo estudiante
+            mostrarBienvenidaCuestionario(nuevoNombre);
         });
 
         JPanel sur = new JPanel();
