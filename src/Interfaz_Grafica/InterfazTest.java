@@ -972,13 +972,19 @@ public class InterfazTest extends JFrame {
                     "Resultados del cuestionario",
                     JOptionPane.INFORMATION_MESSAGE
             );
-
             int resp = JOptionPane.showConfirmDialog(
                     this,
                     "¿Quieres volver a intentar el cuestionario?",
                     "Reintentar",
                     JOptionPane.YES_NO_OPTION
             );
+
+            if (resp == JOptionPane.YES_OPTION) {
+                mostrarCuestionario(nombreEstudiante);
+            } else {
+                mostrarBienvenidaCuestionario(nombreEstudiante);
+            }
+
 
             if (resp == JOptionPane.YES_OPTION) {
                 mostrarCuestionario(nombreEstudiante);
