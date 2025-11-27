@@ -51,39 +51,61 @@ public class GrafoTutoria {
     /**
      * Muestra la estructura final del grafo y las asignaciones de tutoría.
      */
-    public void mostrarAsignaciones() {
-        System.out.println("==================================================");
-        System.out.println("       ESTRUCTURA DEL GRAFO DE TUTORIA");
-        System.out.println("==================================================");
+    public void mostrarGrafoPorMateria(String materiaBuscada) {
+    // 1. Validar que la materia exista como falencia grupal
+    //Es crucial preguntar al mapa de estudiantes: ¿Existe un nodo central para esta materiaBuscada?
+//Si no existe (!containsKey), significa que ningún estudiante tiene esa materia como falencia, por lo tanto, no hay grafo que mostrar. Se emite un error y se termina el método (return).
+    if(!estudiantesPorFalencia.containsKey(materiaBuscada)){
+        System.out.println("\n--------------------------------------------------");
+        System.out.println(" ERROR: No existen estudiantes con falencia en " + materiaBuscada.toUpperCase() + ".");
+        System.out.println("grafo no encontrado");
+        System.out.println("--------------------------------------------------");
+        return; // Termina la ejecución si no hay datos
+    }
+    
+    // 2. Obtener los Nodos y Aristas del Grafo
+    
+    // a) Nodos Secundarios (Estudiantes) - La Lista de Aristas N:1
+    List<Estudiante> grupoEstudiantes = estudiantesPorFalencia.get(materiaBuscada); // buscamos la lista que corresponde a la materia que queremos 
+    
+    
+    // b) Nodo Asignado (Profesor) - La Arista 1:1
+    Profesor profesorAsignado = asignacionProfesor.get(materiaBuscada);// busco al profe que digta esta materia
+    
+    System.out.println("\n==================================================");
+    System.out.println("    GRAFO DE ASIGNACIÓN PARA: " + materiaBuscada.toUpperCase()); // .toUpperCase me pone las letras en mayucula 
+    System.out.println("==================================================");
+    
+    // --- CONEXIÓN 1: NODO MATERIA -> NODO PROFESOR (1:1) ---
+    System.out.print("  TUTOR ASIGNADO: ");
+    if (profesorAsignado != null) {
+        System.out.println(profesorAsignado.getNombre() + " (" + profesorAsignado.getEspecialidad() + ")");
+    } else {
+        System.out.println("️ ERROR: No hay profesor especialista en " + materiaBuscada + ".");
+    }
+    
+    // --- CONEXIÓN 2: NODO ESTUDIANTES -> NODO MATERIA (N:1) ---
+    System.out.println("\n  ESTUDIANTES ASIGNADOS (" + grupoEstudiantes.size() + " en total):");
+    System.out.println("  --------------------------------------------------");
 
-        // Iterar sobre las materias (los nodos centrales del grafo)
-        for (String falencia : estudiantesPorFalencia.keySet()) {
-            List<Estudiante> estudiantes = estudiantesPorFalencia.get(falencia);
-            Profesor profesorAsignado = asignacionProfesor.get(falencia);
+    for (Estudiante e : grupoEstudiantes) {
+        // Obtenemos la nota del estudiante en la materia específica
+        int nota = e.getNota(materiaBuscada); 
 
-            // 1. Mostrar el nodo central (Falencia/Materia)
-            System.out.println("\n FALENCIA GRUPAL: " + falencia.toUpperCase());
-            System.out.println("--------------------------------------------------");
+        // Imprimimos la conexión (Arista)
+        System.out.printf("  > Estudiante: %s %s (Usuario: %s) \n", 
+            e.getNombre(), 
+            e.getApellido(), 
+            e.getUsuario() 
+        );
+        System.out.printf("    - Nota en %s: %d\n", materiaBuscada, nota);
+    }
+    System.out.println("  --------------------------------------------------");
 
-            // 2. Mostrar la conexión Materia -> Profesor
-            if (profesorAsignado != null) {
-                System.out.println("  ASIGNADO A PROFESOR: " + profesorAsignado.getNombre());
-            } else {
-                System.out.println("  ️ ERROR: No hay profesor asignado para " + falencia);
-            }
-
-            // 3. Mostrar las conexiones Estudiante -> Materia (el grupo)
-            System.out.print("  ESTUDIANTES ASIGNADOS (" + estudiantes.size() + "): ");
-            
-            List<String> nombres = new ArrayList<>();
-            for (Estudiante e : estudiantes) {
-                nombres.add(e.getNombre());
-            }
-            System.out.println(String.join(", ", nombres));
-        }
     
     
 }
+    
 
     public void configurarProfesores(List<Profesor> profesores) {
         // Itera sobre la lista de profesores que le pasamos desde el main
